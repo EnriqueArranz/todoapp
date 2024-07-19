@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TODO List</title>
+</head>
+<body>
+<form th:action="@{/todos}" method="get">
+    <input type="text" name="title" placeholder="Filtrar por título" th:value="${param.title}" />
+    <input type="text" name="username" placeholder="Filtrar por usuario" th:value="${param.username}" />
+    <button type="submit">Filtrar</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th><a th:href="@{/todos(sort='title', direction=${sortField == 'title' ? (direction == 'asc' ? 'desc' : 'asc') : 'asc'}, title=${param.title}, username=${param.username})}">Título</a></th>
+        <th><a th:href="@{/todos(sort='username', direction=${sortField == 'username' ? (direction == 'asc' ? 'desc' : 'asc') : 'asc'}, title=${param.title}, username=${param.username})}">Usuario</a></th>
+        <th><a th:href="@{/todos(sort='country', direction=${sortField == 'country' ? (direction == 'asc' ? 'desc' : 'asc') : 'asc'}, title=${param.title}, username=${param.username})}">País</a></th>
+        <th><a th:href="@{/todos(sort='completed', direction=${sortField == 'completed' ? (direction == 'asc' ? 'desc' : 'asc') : 'asc'}, title=${param.title}, username=${param.username})}">Completado</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="todo : ${todoPage.content}">
+        <td th:text="${todo.title}">Título</td>
+        <td th:text="${todo.username}">Usuario</td>
+        <td th:text="${todo.country}">País</td>
+        <td th:text="${todo.completed} ? 'Sí' : 'No'">Completado</td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:if="${todoPage.hasPrevious()}" th:href="@{/todos(page=${todoPage.number - 1}, size=${todoPage.size}, sort=${sortField}, direction=${direction}, title=${param.title}, username=${param.username})}">Anterior</a>
+    <span th:text="${todoPage.number + 1}">1</span>
+    <a th:if="${todoPage.hasNext()}" th:href="@{/todos(page=${todoPage.number + 1}, size=${todoPage.size}, sort=${sortField}, direction=${direction}, title=${param.title}, username=${param.username})}">Siguiente</a>
+</div>
+</body>
+</html>

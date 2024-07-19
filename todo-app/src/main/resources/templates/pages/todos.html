@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>TODO List</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+  <script>
+    function confirmDelete(id) {
+      if (confirm("Are you sure? This operation cannot be undone")) {
+        window.location.href = '/todos/delete/' + id;
+      }
+    }
+  </script>
+</head>
+<body>
+<h1>TODO List</h1>
+<table>
+  <thead>
+  <tr>
+    <th><a th:href="@{/todos?sort=title}">Title</a></th>
+    <th><a th:href="@{/todos?sort=username}">Username</a></th>
+    <th><a th:href="@{/todos?sort=country}">Country</a></th>
+    <th><a th:href="@{/todos?sort=completed}">Completed</a></th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="todo : ${todos}">
+    <td th:text="${todo.title}"></td>
+    <td th:text="${todo.user.username}"></td>
+    <td th:text="${todo.user.country}"></td>
+    <td th:text="${todo.completed ? 'Yes' : 'No'}"></td>
+    <td>
+      <a th:href="@{/todos/edit/{id}(id=${todo.id})}">Edit</a>
+      <button onclick="confirmDelete([[${todo.id}]])">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<a th:href="@{/todos/create}">Create New TODO</a>
+</body>
+</html>

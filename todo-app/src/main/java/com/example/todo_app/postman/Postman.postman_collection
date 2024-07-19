@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "84cb2e89-c0cd-40f2-85bd-ef3ec0dd675c",
+		"name": "PRUEBA_TECNICA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32629894"
+	},
+	"item": [
+		{
+			"name": "REGISTER",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"username\": \"kokdoe\",\r\n    \"password\": \"securepassword123\",\r\n    \"street\": \"123 Main St\",\r\n    \"city\": \"Anytown\",\r\n    \"zipcode\": \"12345\",\r\n    \"country\": \"USA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "LOGIN POST",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsb2xvbG8iLCJpYXQiOjE3MjExNzEyMjUsImV4cCI6MTcyMTE3MjY2NX0.2Y9hdw9RUQaKSBhcLtVQ8GKAawF617lIVUbMx0QJaBU"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"lololo\",\r\n\"password\": \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "ADD TODO",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ4eSIsImlhdCI6MTcyMTM3NDM3MiwiZXhwIjoxNzIxNDE3NTcyfQ.mtR7-57cgYLqIiikCP2kBR-yOevFpRa86ZwLMQMRjqU"
+					}
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"title\": \"Complete homework\",\r\n  \"completed\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/todoapp/user/addTodo"
+			},
+			"response": []
+		},
+		{
+			"name": "UPDATE TODO",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": "http://localhost:8080/api/v1/todoapp/"
+			},
+			"response": []
+		},
+		{
+			"name": "GET ALL PAGEABLE",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaWtlIiwiaWF0IjoxNzIxNDA1MTIwLCJleHAiOjE3MjE0NDgzMjB9.te6jQB4oIp1aTU_9NuLpmY5rseVX6_WfmztkfAdXirc"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "id",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/todoapp/getAll?sort=id&page=1&direction=ASC&size=10&title=shoes&username=lauraw",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"todoapp",
+						"getAll"
+					],
+					"query": [
+						{
+							"key": "sort",
+							"value": "id"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "direction",
+							"value": "ASC"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						},
+						{
+							"key": "title",
+							"value": "shoes"
+						},
+						{
+							"key": "username",
+							"value": "lauraw"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE ONE BY USER",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {}
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"username\": \"xy\",\r\n\"password\": \"xy\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/todoapp/delete/"
+			},
+			"response": []
+		}
+	]
+}
