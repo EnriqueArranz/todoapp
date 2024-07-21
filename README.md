@@ -41,7 +41,8 @@ La aplicación utiliza autenticación basada en JSON Web Tokens (JWT). Para acce
 
 
 ###Registro de Usuario
-Endpoint: /auth/register (POST)
+Endpoint:
+http://localhost:8080/auth/register (POST)
 Cuerpo:
 json
 
@@ -57,7 +58,8 @@ json
 Nos devolverá un token para iniciar sesión con las credenciales
 
 ###Inicio de Sesión
-Endpoint: /auth/login (POST)
+Endpoint:
+http://localhost:8080/auth/login (POST)
 Cuerpo:
 json
 
@@ -78,7 +80,7 @@ Authorization: Bearer <tu_token_jwt>
 Endpoints
 
 ###Agregar TODO
-Endpoint: /api/v1/todoapp/user/addTodo (POST)
+Endpoint: http://localhost:8080/api/v1/todoapp/user/addTodo (POST)
 Cuerpo:
 json
 
@@ -96,11 +98,11 @@ Copiar código
   "title": "Updated Title",
   "completed": false
 }
-Necesitaremos introducir el id del todo y el token. Si el todo no es del usuario logado no nos permitirá modificarlo.
+Necesitaremos introducir el id del todo a modificar en la url y el token de logado en el Header. Si el todo no es del usuario logado no nos permitirá modificarlo.
 
 ###Eliminar TODO
 Endpoint: /api/v1/todoapp/delete/{id} (DELETE)
-Necesitaremos introducir el id del todo y el token. Si el todo no es del usuario logado no nos permitirá eliminarlo.
+Necesitaremos introducir el id del todo en la url y el token. Si el todo no es del usuario logado no nos permitirá eliminarlo.
 
 ###Ver todos los TODOS (paginable)
 Endpoint: /api/v1/todoapp/getAll (GET)
