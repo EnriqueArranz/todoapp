@@ -25,7 +25,6 @@ Configurar el Archivo application.properties
 En el archivo src/main/resources/application.properties, configura los detalles de tu base de datos:
 
 properties
-Copiar código
 spring.datasource.url=jdbc:mysql://localhost:3306/tododb1
 spring.datasource.username=tu_usuario
 spring.datasource.password=tu_contraseña
