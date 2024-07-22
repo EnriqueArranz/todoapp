@@ -92,7 +92,6 @@ json
 Endpoint: /api/v1/todoapp/update/{id} (PUT)
 Cuerpo:
 json
-Copiar código
 ```sh
 {
   "title": "Updated Title",
