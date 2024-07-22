@@ -107,8 +107,8 @@ Necesitaremos introducir el id del todo en la url y el token. Si el todo no es d
 
 ### Ver todos los TODOS (paginable)
 Endpoint: http://localhost:8080/api/v1/todoapp/getAll (GET)
-```sh
 Parámetros de consulta:
+```sh
 title (opcional): Filtrar por título que contenga el texto.
 username (opcional): Filtrar por nombre de usuario (exacto).
 page (opcional): Número de página.
