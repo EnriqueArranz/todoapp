@@ -23,14 +23,14 @@ Esta aplicación es un sistema de gestión de tareas (TODOs) que permite a los u
 Configurar el Archivo application.properties
 
 En el archivo src/main/resources/application.properties, configura los detalles de tu base de datos:
-
+```sh
 properties
 spring.datasource.url=jdbc:mysql://localhost:3306/tododb1
 spring.datasource.username=tu_usuario
 spring.datasource.password=tu_contraseña
 spring.jpa.hibernate.ddl-auto=update
 Reemplaza tu_usuario y tu_contraseña con tus credenciales de base de datos.
-
+```
 
 La aplicación estará disponible en http://localhost:8080.
 Todos los endpoints están incluidos en un archivo postman para poder importar el workspace.
@@ -102,11 +102,11 @@ Copiar código
 Necesitaremos introducir el id del todo a modificar en la url y el token de logado en el Header. Si el todo no es del usuario logado no nos permitirá modificarlo.
 
 ### Eliminar TODO
-Endpoint: /api/v1/todoapp/delete/{id} (DELETE)
+Endpoint:http://localhost:8080/api/v1/todoapp/delete/{id} (DELETE)
 Necesitaremos introducir el id del todo en la url y el token. Si el todo no es del usuario logado no nos permitirá eliminarlo.
 
 ### Ver todos los TODOS (paginable)
-Endpoint: /api/v1/todoapp/getAll (GET)
+Endpoint: http://localhost:8080/api/v1/todoapp/getAll (GET)
 Parámetros de consulta:
 title (opcional): Filtrar por título que contenga el texto.
 username (opcional): Filtrar por nombre de usuario (exacto).
