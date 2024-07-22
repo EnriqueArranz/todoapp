@@ -35,16 +35,15 @@ Reemplaza tu_usuario y tu_contraseña con tus credenciales de base de datos.
 La aplicación estará disponible en http://localhost:8080.
 Todos los endpoints están incluidos en un archivo postman para poder importar el workspace.
 
-Autenticación JWT
+### Autenticación JWT
 La aplicación utiliza autenticación basada en JSON Web Tokens (JWT). Para acceder a los endpoints que requieren autenticación, necesitarás un token JWT.
 
-
-###Registro de Usuario
+### Registro de usuario
 Endpoint:
 http://localhost:8080/auth/register (POST)
 Cuerpo:
 json
-
+```sh
 {
   "name": "John Doe",
   "username": "johndoe",
@@ -54,18 +53,20 @@ json
   "zipcode": "12345",
   "country": "USA"
 }
+```
 Nos devolverá un token para iniciar sesión con las credenciales
 
-###Inicio de Sesión
+### Inicio de Sesión
 Endpoint:
 http://localhost:8080/auth/login (POST)
 Cuerpo:
 json
-
+```sh
 {
   "username": "johndoe",
   "password": "securepassword123"
 }
+```
 Introducimos las credenciales y en el Bearer el token que obtuvimos al registrar el usuario
 Nos devolverá un 200OK conforme el usuario está logado y nos devolverá un token JWT con el que poder realizar todas las peticiones securizadas.
 Necesitaremos el token para autenticar las siguientes solicitudes.
@@ -77,33 +78,34 @@ Authorization: Bearer <tu_token_jwt>
 
 
 Endpoints
-
-###Agregar TODO
+### Agregar TODO
 Endpoint: http://localhost:8080/api/v1/todoapp/user/addTodo (POST)
 Cuerpo:
 json
-
+```sh
 {
   "title": "Complete homework",
   "completed": true
 }
-
-###Actualizar TODO
+```
+### Actualizar TODO
 Endpoint: /api/v1/todoapp/update/{id} (PUT)
 Cuerpo:
 json
 Copiar código
+```sh
 {
   "title": "Updated Title",
   "completed": false
 }
+```
 Necesitaremos introducir el id del todo a modificar en la url y el token de logado en el Header. Si el todo no es del usuario logado no nos permitirá modificarlo.
 
-###Eliminar TODO
+### Eliminar TODO
 Endpoint: /api/v1/todoapp/delete/{id} (DELETE)
 Necesitaremos introducir el id del todo en la url y el token. Si el todo no es del usuario logado no nos permitirá eliminarlo.
 
-###Ver todos los TODOS (paginable)
+### Ver todos los TODOS (paginable)
 Endpoint: /api/v1/todoapp/getAll (GET)
 Parámetros de consulta:
 title (opcional): Filtrar por título que contenga el texto.
